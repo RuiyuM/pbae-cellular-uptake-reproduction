@@ -1,7 +1,8 @@
-/** Print the self-contained report to A4, retaining Chinese text and hyperlinks.
+/** Print the self-contained report to A4, retaining text and hyperlinks.
  * Optional export dependency: npm install --no-save playwright
  * Then: npx playwright install chromium; node scripts/export_pdf.cjs
  * CHROME_PATH may point to an existing Chrome executable instead.
+ * Add --english to export report_en.html to the English PDF.
  */
 const fs = require('node:fs');
 const path = require('node:path');
@@ -11,7 +12,8 @@ try { ({ chromium } = require('playwright')); }
 catch { ({ chromium } = require('playwright-core')); }
 const root = path.resolve(__dirname, '..');
 const repo = 'https://github.com/RuiyuM/pbae-cellular-uptake-reproduction';
-const output = path.join(root, 'output/pdf/pbae_table2_reproduction_report.pdf');
+const english = process.argv.includes('--english');
+const output = path.join(root, `output/pdf/pbae_table2_reproduction_report${english ? '_en' : ''}.pdf`);
 
 async function main() {
   fs.mkdirSync(path.dirname(output), { recursive: true });
@@ -20,12 +22,12 @@ async function main() {
   const browser = await chromium.launch(options);
   try {
     const page = await browser.newPage({ viewport: { width: 680, height: 1000 } });
-    await page.goto(pathToFileURL(path.join(root, 'report.html')).href);
+    await page.goto(pathToFileURL(path.join(root, english ? 'report_en.html' : 'report.html')).href);
     await page.evaluate(async () => {
       await document.fonts.ready;
       await Promise.all([...document.images].map(img => img.decode()));
     });
-    await page.evaluate(({ repo }) => {
+    await page.evaluate(({ repo, english }) => {
       // Each original main section starts a new printed page.
       const main = document.querySelector('main');
       const children = [...main.children];
@@ -50,14 +52,18 @@ async function main() {
       }
       const files = [...document.querySelectorAll('.print-section')].at(-1);
       const guide = document.createElement('div');
-      guide.innerHTML = `<h3>获取代码与重新运行</h3>
+      guide.innerHTML = english ? `<h3>Getting the code and rerunning the study</h3>
+        <p>Open the repository below and choose Code → Download ZIP to download the full code package. The repository also contains the PDF reports, processed inputs, individual results, and verification records.</p>
+        <p class="repository"><a href="${repo}">${repo}</a></p>
+        <p>See the repository README for the environment and execution order. First retrieve the pinned author repository and raw GEO data, then reconstruct features, train, verify, and generate the report. Raw microarrays and the authors' paper are downloaded from their sources rather than bundled with the code.</p>
+        <p class="small">Sources, checksums, and assumptions are recorded in sources/download_manifest.json, results/input_checksums.json, and results/protocol.json.</p>` : `<h3>获取代码与重新运行</h3>
         <p>打开以下仓库，点击 Code → Download ZIP 即可下载完整代码包。仓库同时保存本报告 PDF、处理后的输入、逐次结果与校验记录。</p>
         <p class="repository"><a href="${repo}">${repo}</a></p>
         <p>运行环境与顺序见仓库首页 README。先下载固定版本的作者仓库及 GEO 原始数据，再依次重建特征、训练、校验和生成报告。原始芯片及作者论文通过来源下载，不随代码包重复打包。</p>
         <p class="small">数据来源、文件校验值和具体假设见 sources/download_manifest.json、results/input_checksums.json 与 results/protocol.json。</p>`;
       files.insertBefore(guide, files.querySelector('footer'));
-      document.title = 'pBAE 细胞摄取预测 - 论文复现与 Table 2 对比';
-    }, { repo });
+      document.title = english ? 'pBAE Cellular Uptake - Reproduction and Table 2 Comparison' : 'pBAE 细胞摄取预测 - 论文复现与 Table 2 对比';
+    }, { repo, english });
     await page.addStyleTag({ content: `
       @page { size: A4; margin: 13mm 14mm 17mm; }
       html, body { background: white; }
@@ -97,6 +103,9 @@ async function main() {
       .small, footer { font-size: 8.5pt; line-height: 1.55; }
       footer { margin-top: 22px; padding-top: 12px; overflow-wrap: anywhere; }
       a { color: #087f8c; text-decoration: underline; }
+      html[lang="en"] body { font-family: Arial, Helvetica, sans-serif; line-height: 1.5; }
+      html[lang="en"] h1 { font-size: 21pt; }
+      html[lang="en"] .overview img { max-height: 82mm; }
     ` });
     await page.emulateMedia({ media: 'print' });
     const layout = await page.locator('.print-section').evaluateAll(nodes => nodes.map(n => ({

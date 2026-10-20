@@ -6,10 +6,13 @@ It is a **best-effort reproduction**, not an exact recovery of the unpublished
 final-paper data matrix and random seeds. Start with `report.html` for the Chinese
 report, figures, results, and limitations.
 
-**Shareable report:** [PDF](output/pdf/pbae_table2_reproduction_report.pdf) ·
+**Shareable reports:** [English PDF](output/pdf/pbae_table2_reproduction_report_en.pdf) ·
+[Chinese PDF](output/pdf/pbae_table2_reproduction_report.pdf) ·
 [GitHub repository](https://github.com/RuiyuM/pbae-cellular-uptake-reproduction)
 
-The report is in Chinese; the scripts, figures, and run instructions are in English.
+The report is available in English and Chinese; the scripts, figures, and run
+instructions are in English. Self-contained HTML versions are `report_en.html`
+and `report.html`.
 
 | Model | Paper Table 2 MAE | Rerun, fixed split (mean ± sample SD, n=5) |
 | --- | ---: | ---: |
@@ -43,6 +46,7 @@ python3.10 -m venv .venv
 .venv/bin/python scripts/run_experiments.py
 .venv/bin/python scripts/verify_results.py
 .venv/bin/python scripts/build_report.py
+.venv/bin/python scripts/build_report_en.py
 ```
 
 Processed inputs, results, and checksums are included. The original author's
@@ -58,6 +62,7 @@ The optional PDF export uses Node.js and Chromium and is separate from training:
 npm install --no-save playwright
 npx playwright install chromium
 node scripts/export_pdf.cjs
+node scripts/export_pdf.cjs --english
 ```
 
 An existing Chrome can be selected with the `CHROME_PATH` environment variable.
