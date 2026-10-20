@@ -1,0 +1,13 @@
+.venv/
+__pycache__/
+.cache/
+*.log
+sources/author_repository/
+sources/*.pdf
+sources/*.png
+sources/paper_page_*.txt
+data/raw/
+results/models/
+tmp/
+.DS_Store
+node_modules/

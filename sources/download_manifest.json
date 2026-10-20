@@ -1,0 +1,56 @@
+[
+  {
+    "url": "https://dau.url.edu/bitstream/handle/20.500.14342/4643/Biomat_scie_2023-11_a-machine.pdf?sequence=1",
+    "file": "sources/paper.pdf",
+    "bytes": 498540,
+    "sha256": "9616ec083a23a466e3a6994245ad50e44394acc027049046d03d27caf524246a"
+  },
+  {
+    "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM1406256&targ=self&form=text&view=full",
+    "file": "data/raw/GSM1406256.soft",
+    "bytes": 714655,
+    "sha256": "9c8b316104dc6ffc1e637a2d893815c1b4b492854ced46a90f246126d6a3db01"
+  },
+  {
+    "url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM1406nnn/GSM1406256/suppl/GSM1406256_EE.txt.gz",
+    "file": "data/raw/GSM1406256_EE.txt.gz",
+    "bytes": 8342017,
+    "sha256": "652430d50ac0c70fa90156561edcd507168e4b9534a5e80ba87bf8343df08627"
+  },
+  {
+    "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM1529765&targ=self&form=text&view=full",
+    "file": "data/raw/GSM1529765.soft",
+    "bytes": 979646,
+    "sha256": "5f34c4f9b011d9c6ccfe0e6bfeae9383b028fd81284171f755e883e6b3356c90"
+  },
+  {
+    "url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM1529nnn/GSM1529765/suppl/GSM1529765_4T1_parental_D.txt.gz",
+    "file": "data/raw/GSM1529765_4T1_parental_D.txt.gz",
+    "bytes": 16717797,
+    "sha256": "89edd7c465cbcccd6b2d289d83754740eb5cbae0d86a13863c325919597680e0"
+  },
+  {
+    "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM564167&targ=self&form=text&view=full",
+    "file": "data/raw/GSM564167.soft",
+    "bytes": 993603,
+    "sha256": "79750514eb8ccb1dcb72f53e7b3b52c600751eb3af0d13b134735cf29ae4aa40"
+  },
+  {
+    "url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM564nnn/GSM564167/suppl/GSM564167.txt.gz",
+    "file": "data/raw/GSM564167.txt.gz",
+    "bytes": 9369348,
+    "sha256": "5e7975fbf02009dc037c937a53747ed9042646494e8e72c267c31236f9ae9818"
+  },
+  {
+    "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM613188&targ=self&form=text&view=full",
+    "file": "data/raw/GSM613188.soft",
+    "bytes": 1044648,
+    "sha256": "8c8358beec8408f2076c850f560ce2bcaae5224e4d806cb96440f9c575043c75"
+  },
+  {
+    "url": "https://ftp.ncbi.nlm.nih.gov/geo/samples/GSM613nnn/GSM613188/suppl/GSM613188.txt.gz",
+    "file": "data/raw/GSM613188.txt.gz",
+    "bytes": 8095042,
+    "sha256": "2b7281c5457ffbfa6365482d9fcedab9b12d289184cf50a1ad82d3149d51ec49"
+  }
+]

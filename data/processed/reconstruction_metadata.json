@@ -1,0 +1,53 @@
+{
+  "original_data_sha256": "b07992e5dca3460363e526fbbe9ad8e17877dba7d79d22f5b4d41f98b80327b1",
+  "normalization": "log2(median(gMeanSignal of selected spots) / mean(gMeanSignal of ALL array spots, including controls))",
+  "author_matching_inferred": "Case-insensitive substring search of GeneName; AGRIN -> AGRN alias for HDF",
+  "validation": {
+    "matched_values": 212,
+    "total_values": 212,
+    "max_absolute_error": 1.1546319456101628e-14
+  },
+  "features": [
+    "C6H",
+    "C6R",
+    "C6K",
+    "C32H",
+    "C32R",
+    "C32K",
+    "Size",
+    "Polydispersity",
+    "CLTA",
+    "CLTB",
+    "CLTC",
+    "PICALM",
+    "CAV1",
+    "CAV2",
+    "CellType_cancerous",
+    "CellType_metastatic",
+    "CellType_human"
+  ],
+  "important_limitations": [
+    "The recovered rule is validated against the current repository, not an unpublished final-paper input matrix.",
+    "Substring CLTC matching also includes CLTCL1 in the two human arrays; exact_symbol is supplied as a sensitivity analysis.",
+    "Reconstructed mouse CAV1/CAV2 directions do not agree with the colors in published Figure 3B. No values are altered to fit the figure.",
+    "Each cited GEO accession is a proxy expression sample, not the same cells measured in the uptake experiment."
+  ],
+  "samples": {
+    "OVCAR4": {
+      "accession": "GSM564167",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM564167"
+    },
+    "PANC02": {
+      "accession": "GSM1406256",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM1406256"
+    },
+    "4T1": {
+      "accession": "GSM1529765",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM1529765"
+    },
+    "HDF": {
+      "accession": "GSM613188",
+      "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM613188"
+    }
+  }
+}

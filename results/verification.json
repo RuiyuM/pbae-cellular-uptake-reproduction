@@ -1,0 +1,15 @@
+{
+  "status": "PASS",
+  "main_model_runs": 64,
+  "extra_rf_runs": 5,
+  "neural_network_runs": 16,
+  "nn_epochs_per_run": 100,
+  "test_predictions": 1536,
+  "partitions": 16,
+  "normalization_values_checked": 212,
+  "max_metric_recalculation_error": 3.552713678800501e-15,
+  "duplicate_seed_predictions_identical": true,
+  "neural_model_reload_max_error": 3.552713678800501e-15,
+  "neural_network_parameter_count": 2502,
+  "numerical_note": "Collinear inputs cause unstable native sklearn 1.2.2 LM coefficients; separate stable-SVD diagnostics supplied."
+}
